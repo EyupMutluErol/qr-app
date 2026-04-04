@@ -25,7 +25,7 @@ export default function AdminLoginForm() {
 
     try {
       await axios.post("/api/admin/login", data)
-      router.push("/admin")
+      window.location.href = "/admin"
     } catch (error: any) {
       if (error.response) {
         setGlobalError(error.response.data.error || "Giriş işlemi başarısız oldu.")
