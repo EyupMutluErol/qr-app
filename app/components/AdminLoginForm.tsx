@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import axios from "axios"
 
@@ -11,8 +10,7 @@ type LoginFormData = {
 }
 
 export default function AdminLoginForm() {
-  const router = useRouter()
-  const [globalError, setGlobalError] = useState("")
+  const [globalError, setGlobalError] = useState("");
 
   const {
     register,
@@ -21,16 +19,16 @@ export default function AdminLoginForm() {
   } = useForm<LoginFormData>()
 
   const onSubmit = async (data: LoginFormData) => {
-    setGlobalError("")
+    setGlobalError("");
 
     try {
-      await axios.post("/api/admin/login", data)
-      window.location.href = "/admin"
+      await axios.post("/api/admin/login", data);
+      window.location.href = "/admin";
     } catch (error: any) {
       if (error.response) {
-        setGlobalError(error.response.data.error || "Giriş işlemi başarısız oldu.")
+        setGlobalError(error.response.data.error || "Giriş işlemi başarısız oldu.");
       } else {
-        setGlobalError("Sunucuya bağlanılamadı. Lütfen tekrar deneyin.")
+        setGlobalError("Sunucuya bağlanılamadı. Lütfen tekrar deneyin.");
       }
     }
   }
