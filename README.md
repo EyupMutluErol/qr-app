@@ -27,37 +27,37 @@ Bu proje, etkinliklerdeki yoklama süreçlerini dijitalleştirmek, hızlandırma
 Projeyi kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları izleyin:
 
 ### 1. Depoyu Klonlayın
-\`\`\`bash
+\`\`bash
 git clone https://github.com/EyupMutluErol/qr-app.git
 cd qr-app
-\`\`\`
+\`\`
 
 ### 2. Bağımlılıkları Yükleyin
-\`\`\`bash
+\`\`bash
 npm install
-\`\`\`
+\`\`
 
 ### 3. Çevre Değişkenlerini (Environment Variables) Ayarlayın
 Proje ana dizininde bir `.env` dosyası oluşturun ve aşağıdaki değişkenleri kendi bilgilerinize göre doldurun:
-\`\`\`env
+env
 DATABASE_URL="postgresql://kullaniciadi:sifre@host:port/veritabani_adi?sslmode=require"
 JWT_SECRET="kendi_belirlediginiz_guclu_gizli_kelime"
 INITIAL_ADMIN_PASSWORD="sisteme_ilk_giris_sifreniz"
 NEXT_PUBLIC_SITE_URL="http://localhost:3000"
-\`\`\`
+
 
 ### 4. Veritabanını İnşa Edin
-\`\`\`bash
+\`\`bash
 npx prisma db push
-\`\`\`
+\`\`
 
 ### 5. İlk Yöneticiyi (Admin) Oluşturun
 Proje lokalde çalışırken tarayıcıdan \`http://localhost:3000/api/admin/setup\` adresine giderek ilk yöneticinizi veritabanına kaydedin.
 
 ### 6. Projeyi Başlatın
-\`\`\`bash
+\`\`bash
 npm run dev
-\`\`\`
+\`\`
 Proje \`http://localhost:3000\` adresinde çalışmaya başlayacaktır.
 
 ## ☁️ Canlıya Alma (Deployment)
