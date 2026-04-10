@@ -8,6 +8,7 @@ import AttendanceModal from "./modals/AttendanceModal"
 import EventModal from "./modals/EventModal"
 import EventListModal from "./modals/EventListModal"
 import QrDisplayModal from "./modals/QrDisplayModal" 
+export const dynamic = "force-dynamic";
 
 
 type DashboardProps = {
@@ -46,7 +47,7 @@ export default function AdminDashboard({ activeEvents, totalAttendances, events,
   // katılımcı listesini çekiyorum
   const fetchParticipants = async () => {
     try {
-      const res = await axios.get("/api/admin/participants");
+      const res = await axios.get(`/api/admin/participants?t=${new Date().getTime()}`)
       setAllParticipants(res.data);
     } catch (error) {
       console.error("Katılımcılar çekilemedi", error);
