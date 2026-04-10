@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  allowedDevOrigins: ['susana-supersacred-lynn.ngrok-free.dev', 'localhost:3000'],
 };
 
 export default nextConfig;

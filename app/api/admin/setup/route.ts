@@ -2,6 +2,8 @@ import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
 import bcrypt from "bcryptjs"
 
+
+// başlangıçta admin oluşturmak için yazıyorum
 export async function GET() {
   try {
     const adminCount = await prisma.admin.count()
@@ -13,7 +15,7 @@ export async function GET() {
       )
     }
 
-    const initialPassword = process.env.INITIAL_ADMIN_PASSWORD
+    const initialPassword = process.env.INITIAL_ADMIN_PASSWORD;
 
     if (!initialPassword) {
       return NextResponse.json(
@@ -22,7 +24,7 @@ export async function GET() {
       )
     }
 
-    const hashedPassword = await bcrypt.hash(initialPassword, 10)
+    const hashedPassword = await bcrypt.hash(initialPassword, 10);
 
     const admin = await prisma.admin.create({
       data: {

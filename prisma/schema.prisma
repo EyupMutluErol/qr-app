@@ -17,10 +17,12 @@ model Admin {
 model Event {
   id          String       @id @default(uuid())
   name        String
+  locationName String      @default("Belirtilmemiş")
   secretKey   String       @default(uuid()) 
   latitude    Float       // enlem
   longitude   Float        // boylam
   createdAt   DateTime     @default(now())
+  eventDate   DateTime
   attendances Attendance[]
 }
 
@@ -31,6 +33,7 @@ model Participant {
   email        String       @unique
   phone        String?
   isRegistered Boolean      @default(false)
+  isActive     Boolean      @default(true)
   attendances  Attendance[]
 }
 

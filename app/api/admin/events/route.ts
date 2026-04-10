@@ -1,12 +1,13 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
+// etkinlik oluşturma
 export async function POST(request:Request) {
     try {
         const body = await request.json();
-        const {name,latitude,longitude} = body;
+        const {name,locationName,latitude,longitude,eventDate} = body;
 
-        if(!name || latitude === undefined || longitude === undefined){
+        if(!name || !locationName || latitude === undefined || longitude === undefined || !eventDate){
             return NextResponse.json(
                 {error:"Lütfen tüm alanları doldurun."},
                 {status:400}
@@ -16,8 +17,10 @@ export async function POST(request:Request) {
         const newEvent = await prisma.event.create({
             data:{
                 name,
+                locationName,
                 latitude:parseFloat(latitude),
-                longitude:parseFloat(longitude)
+                longitude:parseFloat(longitude),
+                eventDate: new Date(eventDate)
             }
         })
 
